@@ -2,7 +2,7 @@
 
 Para este e-commerce, se considerará a un cliente en churn si no realiza una nueva compra dentro de los 60 días posteriores a su última compra registrada.
 
-Este enfoque se centra en un factor clave para la rentabilidad del negocio: la retención temprana. Convertir un cliente nuevo en uno recurrente incrementa su valor a largo plazo (Customer Lifetime Value). Por lo tanto, se asume que un cliente que no compra dentro de un periodo de 60 días tiene una alta probabilidad de haber perdido interés o migrado a la competencia.
+Este enfoque se centra en un factor clave para la rentabilidad del negocio. Convertir un cliente nuevo en uno recurrente incrementa su valor a largo plazo (Customer Lifetime Value). Por lo tanto, se asume que un cliente que no compra dentro de un periodo de 60 días tiene una alta probabilidad de haber perdido interés o migrado a la competencia.
 
 ## Objetivo del modelo
 
