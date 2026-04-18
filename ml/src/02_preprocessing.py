@@ -1,33 +1,51 @@
 import pandas as pd
 from typing import Tuple
+from sklearn.model_selection import train_test_split
 
 TARGET = "Churn"
-def separar_features_target_df(df: pd.DataFrame)->Tuple[pd.DataFrame,pd.Series]:
-    y = df[TARGET]
-    X = df.drop(columns=[TARGET])
-    return X,y
 
 def cargar_informacion(path: str) -> pd.DataFrame:
     return pd.read_csv(path)
 
-COLS_FEATURES = [
+def seleccionar_cols_feature(df: pd.DataFrame)-> pd.DataFrame:
+    feature_cols = [
     "Tenure",
     "PreferedOrderCat",
     "MaritalStatus",
     "Complain",
 ]
+    return df[feature_cols]
 
-def seleccionar_cols_feature(df: pd.DataFrame)-> pd.DataFrame:
-    return df[COLS_FEATURES]
-
-def preprocesamiento(df: pd.DataFrame)->Tuple[pd.DataFrame,pd.Series]:
+def get_X_y(df: pd.DataFrame):
+    X = seleccionar_cols_feature(df);
     y = df[TARGET]
-    X = seleccionar_cols_feature(df)
     return X,y
+
+def hacer_train_test_split(X,y,test_size=0.2,random_state=42):
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size= test_size,
+        random_state = random_state,
+        stratify = y
+    )
+    return X_train, X_test, y_train, y_test
 
 if __name__ == "__main__":
     df = cargar_informacion("data/data_ecommerce_customer_churn.csv")
-    X, y = separar_features_target_df(df)
-    print("X shape: ",X.shape)
-    print("y shape: ",y.shape)
+    X, y = get_X_y(df)
+    X_train, X_test, y_train, y_test = hacer_train_test_split(X, y)
+
+    print("Train size: ",X_train.shape[0])
+    print("Test size: ",X_test.shape[0])
+    print("Total size: ",df.shape[0])
+
+    print("\nChurn distribution overall:")
+    print(y.value_counts(normalize=True)*100)
+
+    print("\nChurn distribution train: ")
+    print(y_train.value_counts(normalize=True)*100)
+    
+    print("\nChurn distribution test: ")
+    print(y_test.value_counts(normalize=True)*100)
 

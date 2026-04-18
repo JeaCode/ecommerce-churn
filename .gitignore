@@ -4,3 +4,4 @@ ml/models/
 data/
 .history/
 .vscode/
+venv
