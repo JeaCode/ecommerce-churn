@@ -14,4 +14,4 @@ La matriz de confusión muestra que el modelo clasifica correctamente a la mayor
 
 ## Síntesis
 
-Como primer modelo baseline, estos resultados son aceptables: el modelo ya es mejor que una regla trivial de “siempre no churn”. No obstante, para un caso de negocio donde interesa captar la mayoría de clientes en riesgo, será importante trabajar en mejorar el recall de la clase churn en sesiones posteriores (probar otros modelos, ajustar umbrales y/o tratar el desbalance).
+Como primer modelo baseline, estos resultados son aceptables: el modelo ya es mejor que una regla trivial de “siempre no churn”. No obstante, para un caso de negocio donde interesa captar la mayoría de clientes en riesgo, será importante trabajar en mejorar el recall de la clase churn.
